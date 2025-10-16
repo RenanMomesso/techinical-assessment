@@ -5,6 +5,7 @@ const FAVORITES_STORAGE_KEY = 'starwars-favorite-planets';
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -13,19 +14,22 @@ export const useFavorites = () => {
       if (savedFavorites) {
         setFavorites(JSON.parse(savedFavorites));
       }
+      setIsInitialized(true);
     } catch (error) {
       console.error('Error loading favorites from localStorage:', error);
+      setIsInitialized(true);
     }
   }, []);
 
-  // Save favorites to localStorage whenever favorites change
   useEffect(() => {
+    if (!isInitialized) return;
+    
     try {
       localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
     } catch (error) {
       console.error('Error saving favorites to localStorage:', error);
     }
-  }, [favorites]);
+  }, [favorites, isInitialized]);
 
   const toggleFavorite = (planet: Planet) => {
     setFavorites(prev => 
