@@ -1,155 +1,70 @@
-# Star Wars Planets Dashboard 🌌
+# Star Wars Planets Dashboard
 
-Hey there! This is my Star Wars planets dashboard project. It's a React app that shows planets from the Star Wars universe with all their residents. Pretty cool stuff!
+React app showing Star Wars planets and their residents.
 
-## What This Thing Does
-
-- Shows all Star Wars planets in a nice table
-- You can click on planets to see more details (a modal will open)
-- Filter planets by climate, terrain, population
-- Mark your favorite planets (saves to browser storage)
-- See residents of each planet in a modal
-- URL sharing - share specific planets with friends
-- Works offline once loaded (thanks to caching)
-
-## Quick Setup (Getting It Running)
+## Setup
 
 ```bash
-git clone <your-repo-url>
-cd technicalchallenge
-
 npm install
-
 npm start
 ```
 
 Open http://localhost:3000
 
+## Features
 
+- Browse planets in a table
+- Click planets for details modal
+- Filter by climate/terrain/population  
+- Save favorites (localStorage)
+- View planet residents
+- Share URLs
 
-## How I Built This (AI Usage & Development)
+## AI Usage
 
-### What I Used
+**Used AI for:**
+- Initial component boilerplate (GitHub Copilot)
+- Test file setup
+- TypeScript interfaces from API
 
-- GitHub Copilot: Helping to code
-- VS Code AI: For quick suggestions and refactoring
-- ChatGPT: When I got stuck on specific problems I search in the chatgpt with some informations
+**Wrote myself:**
+- Custom hooks (favorites, filters)
+- URL state management (AI was trying to implement everything but ended up with a clean solution)
+- Error handling
+- Component structure
+- Styling
 
-### AI vs Me - What's What
+**Modified AI code because:**
+- Split large components into smaller ones
+- Updated to modern React patterns
+- Added better error handling
+- Improved caching logic
 
-**AI Generated (then I modified):**
+## Architecture
 
-- Initial component structure - Copilot gave me the basic layout
-- Test files setup - Used AI to create the testing boilerplate
-- TanStack Query integration - AI helped with the hook patterns
-- TypeScript interfaces - Generated from API responses
+**TanStack Query** - API caching and loading states
+**Custom hooks** - Business logic separation  
+**LocalStorage** - Favorites persistence
+**URL state** - Shareable links
 
-**Stuff I Wrote Myself:**
+## Challenges
 
-- Custom hook logic for favorites and filters
-- URL state management approach (AI was trying to create it own way instead of using third libs, generating a lot of code and overcomplicating the solution)
-- Error handling strategies (I added more detailed error messages and fallback UI)
-- Component composition and data flow
-- Most of the styling decisions
+**API rate limits** → Added caching
+**Nested data loading** → Used dependent queries
+**URL sync** → Custom hook for bidirectional sync
+**TypeScript issues** → Made interfaces flexible
 
-**Why I Changed AI Code:**
+## With more time
 
-- AI wanted to put everything in one huge component - I split it up
-- Generated tests were too basic - added edge cases and real scenarios
-- AI used older React patterns - updated to modern hooks and patterns
-- Made caching smarter than what AI suggested
+- Virtual scrolling
+- Search functionality
+- Dark mode
+- Better mobile UX
+- More tests
+- Offline support
 
-## Architecture Decisions
+## Dependencies
 
-### Why I Chose What I Chose
-
-**TanStack Query:**
-
-- Needed good caching for the API calls
-- Handles loading states automatically
-- Works great with React 18
-
-**Component Structure:**
-
-- Kept components small and focused
-- Used custom hooks for business logic
-- Made everything reusable where possible
-
-**State Management:**
-
-- Local state for UI stuff
-- TanStack Query for server state
-- LocalStorage for favorites
-- URL for shareable state
-
-**Testing:**
-
-- Jest + React Testing Library
-- Focused on user behavior, not implementation
-- Mocked external dependencies properly
-
-## Challenges I Hit (And How I Fixed Them)
-
-### API Rate Limiting
-
-The Star Wars API sometimes gets grumpy with too many requests.
-**Solution:** Added smart caching and request batching.
-
-### Nested Data Loading
-
-Getting residents for each planet was tricky.
-**Solution:** Used TanStack Query's dependent queries feature.
-
-### URL State Sync
-
-Keeping URL in sync with app state was annoying.
-**Solution:** Created a custom hook that handles both directions.
-
-### Testing with Query Cache
-
-Mock data kept interfering with cached data.
-**Solution:** Used unique URLs for each test to avoid conflicts.
-
-### TypeScript Complaints
-
-Star Wars API has inconsistent data types.
-**Solution:** Made interfaces flexible with optional fields.
-
-## What I'd Do With More Time
-
-### Performance Stuff
-
-- Add virtual scrolling for huge planet lists
-- Implement image lazy loading or caching
-- Maybe add some images generated with AI for each planet (using DALL-E or similar)
-
-
-### Features I Want to Add
-
-- Search functionality (not just filters)
-- Compare planets side by side
-- Planet timeline/history view
-- Better mobile experience
-- Add a dark mode theme
-- Add a loading indicator for API requests
-
-### Code Quality
-
-- Add more integration tests
-- Set up proper CI/CD pipeline
-- Add error boundary components
-- Improve accessibility
-- Add more keyboard navigation support
-
-### Data & API
-
-- Add more Star Wars entities (ships, species)
-- Implement offline-first approach
-- Add data export features
-
-
-## Dependencies Worth Mentioning
-
-- **@tanstack/react-query**: For all the data fetching magic
-- **@testing-library/react**: Makes testing actually enjoyable
-- **typescript**: Because I like my bugs caught early
+- `@tanstack/react-query` - Data fetching
+- `@testing-library/react` - Testing
+- `typescript` - Type safety
